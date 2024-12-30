@@ -11,7 +11,7 @@ import yfinance as yf
 def carregar_dados(empresas):
     texto_tickers = " ".join(empresas)
     dados_acao = yf.Tickers(texto_tickers)
-    cotacoes_acao = dados_acao.history(period="1d", start="2010-01-01", end="2024-08-01")
+    cotacoes_acao = dados_acao.history(period="1d", start="2010-01-01", end="2024-12-30")
     print(cotacoes_acao)
     cotacoes_acao = cotacoes_acao["Close"]
     return cotacoes_acao
@@ -26,6 +26,11 @@ def carregar_tickers_acoes():
 acoes = carregar_tickers_acoes()
 dados = carregar_dados(acoes)
 
+ticker = st.text_input("Digite o código da ação (ex: AAPL para Apple, TSLA para Tesla):")
+
+# Verifique se o usuário inseriu um código válido
+    
+    
 #criar a interface streamlit
 st.write("""
 ### PREÇO DE AÇOES
